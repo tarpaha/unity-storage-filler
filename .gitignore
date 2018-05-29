@@ -2,7 +2,4 @@
 /Library
 /UnityPackageManager
 /obj
-/Assets/Plugins/Editor/JetBrains.meta
-/Assets/Plugins/Editor/JetBrains
-/*.csproj
-/*.sln
+/Temp
