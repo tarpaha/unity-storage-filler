@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Threading;
 using DI;
+using Model;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,17 +19,26 @@ namespace View
 
 		[SerializeField]
 		private GameObject _progress;
-		
+
+		private IFileSystem _fileSystem;
+		private IEvents _events;
+
+		private void Awake()
+		{
+			_fileSystem = Root.Instance.FileSystem;
+			_events = Root.Instance.Events;
+		}
+
 		private void Start()
 		{		
 			UpdateControls();
 			SetControlsEnabled(true);
-			Root.Instance.Events.FilesChanged += OnFilesChanged;
+			_events.FilesChanged += OnFilesChanged;
 		}
 
 		private void OnDestroy()
 		{
-			Root.Instance.Events.FilesChanged -= OnFilesChanged;
+			_events.FilesChanged -= OnFilesChanged;
 		}
 
 		private void OnFilesChanged()
@@ -65,7 +75,7 @@ namespace View
 		{
 			LongOperation(() =>
 			{
-				Root.Instance.FileSystem.Create(GetRandomFileName(), size);
+				_fileSystem.Create(GetRandomFileName(), size);
 			});
 		}
 
@@ -99,8 +109,8 @@ namespace View
 
 		private void UpdateControls()
 		{
-			_total.text = Utils.HumanReadable(Root.Instance.FileSystem.Total);
-			_free.text = Utils.HumanReadable(Root.Instance.FileSystem.FreeSpace);
+			_total.text = Utils.HumanReadable(_fileSystem.Total);
+			_free.text = Utils.HumanReadable(_fileSystem.FreeSpace);
 		}
 
 		private static string GetRandomFileName()

@@ -11,16 +11,25 @@ namespace View
 		private FileView _fileView;
 		private Transform _elementsParent;
 
+		private IFileSystem _fileSystem;
+		private IEvents _events;
+
+		private void Awake()
+		{
+			_fileSystem = Root.Instance.FileSystem;
+			_events = Root.Instance.Events;
+		}
+
 		private void Start()
 		{
 			PrepareList();
 			UpdateList();
-			Root.Instance.Events.FilesChanged += OnFilesChanged;
+			_events.FilesChanged += OnFilesChanged;
 		}
 
 		private void OnDestroy()
 		{
-			Root.Instance.Events.FilesChanged -= OnFilesChanged;
+			_events.FilesChanged -= OnFilesChanged;
 		}
 
 		private void PrepareList()
@@ -64,9 +73,9 @@ namespace View
 			return view;
 		}
 
-		private static IEnumerable<IFileRecord> GetFiles()
+		private IEnumerable<IFileRecord> GetFiles()
 		{
-			return Root.Instance.FileSystem.Dir();
+			return _fileSystem.Dir();
 		}				
 	}
 }
