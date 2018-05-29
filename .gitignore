@@ -3,3 +3,5 @@
 /UnityPackageManager
 /obj
 /Temp
+/*.csproj
+/*.sln
