@@ -398,6 +398,7 @@ MonoBehaviour:
   _total: {fileID: 275834959}
   _free: {fileID: 767533990}
   _progress: {fileID: 270869019}
+  _progressText: {fileID: 2144513911}
 --- !u!1 &257440334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,8 +3697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 674.6, y: -447}
-  m_SizeDelta: {x: -1349.1, y: -894}
+  m_AnchoredPosition: {x: 476, y: -447}
+  m_SizeDelta: {x: -952, y: -894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144513911
 MonoBehaviour:
@@ -3731,7 +3732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Working...
+  m_Text: Progress 12%
 --- !u!222 &2144513912
 CanvasRenderer:
   m_ObjectHideFlags: 0

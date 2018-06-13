@@ -19,6 +19,9 @@ namespace View
 
 		[SerializeField]
 		private GameObject _progress;
+		
+		[SerializeField]
+		private Text _progressText;
 
 		private IFileSystem _fileSystem;
 		private IEvents _events;
@@ -115,7 +118,7 @@ namespace View
 
 		private void UpdateProgress(float progress)
 		{
-			Debug.Log(progress);
+			_progressText.text = string.Format("Progress {0}%", (int) (100.0f * progress));
 		}
 		
 		private void UpdateControls()
