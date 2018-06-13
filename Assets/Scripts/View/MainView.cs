@@ -88,7 +88,6 @@ namespace View
 		{
 			SetControlsEnabled(false);
 			yield return RunThreadedCoroutine(action);
-			UpdateControls();
 			SetControlsEnabled(true);
 		}
 		
