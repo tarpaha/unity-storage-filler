@@ -29,10 +29,14 @@ namespace Model
 
         public void Create(string name, long size)
         {
-            using(var file = File.Create(_dir + name))
+            var file = File.Create(_dir + name);
+            while (size > _buffer.Length)
             {
-                file.SetLength(size);
+                file.Write(_buffer, 0, _buffer.Length);
+                size -= _buffer.Length;
             }
+            file.Write(_buffer, 0, (int)size);
+            file.Close();
             Changed();
         }
 
