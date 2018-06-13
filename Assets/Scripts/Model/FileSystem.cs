@@ -31,9 +31,7 @@ namespace Model
         {
             using(var file = File.Create(_dir + name))
             {
-                file.Seek(size - 1, SeekOrigin.Begin);
-                file.WriteByte(0);
-                file.Close();
+                file.SetLength(size);
             }
             Changed();
         }
