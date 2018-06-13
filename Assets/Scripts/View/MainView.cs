@@ -33,12 +33,19 @@ namespace View
 		{		
 			UpdateControls();
 			SetControlsEnabled(true);
+			_events.FileSystemOperationProgress += OnFileSystemOperationProgress;
 			_events.FilesChanged += OnFilesChanged;
 		}
 
 		private void OnDestroy()
 		{
+			_events.FileSystemOperationProgress += OnFileSystemOperationProgress;
 			_events.FilesChanged -= OnFilesChanged;
+		}
+
+		private void OnFileSystemOperationProgress(float progress)
+		{
+			UpdateProgress(progress);
 		}
 
 		private void OnFilesChanged()
@@ -106,6 +113,11 @@ namespace View
 			_progress.SetActive(!controlsEnabled);
 		}
 
+		private void UpdateProgress(float progress)
+		{
+			Debug.Log(progress);
+		}
+		
 		private void UpdateControls()
 		{
 			_total.text = "Total: " + Utils.HumanReadable(_fileSystem.Total);
