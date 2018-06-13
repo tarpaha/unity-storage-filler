@@ -31,12 +31,14 @@ namespace Model
 
         public void Create(string name, long size)
         {
+            var k = 1.0f / size;
             Progress(0);
             var file = File.Create(_dir + name);
             while (size > _buffer.Length)
             {
                 file.Write(_buffer, 0, _buffer.Length);
                 size -= _buffer.Length;
+                Progress(1.0f - k * size);
             }
             file.Write(_buffer, 0, (int)size);
             file.Close();
