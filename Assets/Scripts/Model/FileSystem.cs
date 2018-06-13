@@ -12,11 +12,13 @@ namespace Model
         private readonly string _dir;
         private readonly byte[] _buffer;
 
+        private const int BufferSize = 100 * (1 << 20);
+
         public FileSystem(IPlatform platform, string dir)
         {
             _platform = platform;
             _dir = dir;
-            _buffer = new byte[1 << 20];
+            _buffer = new byte[BufferSize];
         }
 
         public IEnumerable<IFileRecord> Dir()
