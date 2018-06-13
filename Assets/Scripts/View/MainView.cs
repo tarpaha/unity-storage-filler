@@ -109,8 +109,8 @@ namespace View
 
 		private void UpdateControls()
 		{
-			_total.text = Utils.HumanReadable(_fileSystem.Total);
-			_free.text = Utils.HumanReadable(_fileSystem.FreeSpace);
+			_total.text = "Total: " + Utils.HumanReadable(_fileSystem.Total);
+			_free.text = "Free: " + Utils.HumanReadable(_fileSystem.FreeSpace);
 		}
 
 		private static string GetRandomFileName()
