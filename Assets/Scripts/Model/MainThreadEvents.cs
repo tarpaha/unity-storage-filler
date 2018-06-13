@@ -13,6 +13,7 @@ namespace Model
         
         public MainThreadEvents(IFileSystem fileSystem)
         {
+            fileSystem.Progress += OnFileSystemOperationProgress;
             fileSystem.Changed += OnFileSystemChanged;
         }
 
@@ -27,6 +28,17 @@ namespace Model
             }
         }
 
+        private void OnFileSystemOperationProgress(float progress)
+        {            
+            lock (_events)
+            {
+                _events.Enqueue(() =>
+                {
+                    FileSystemOperationProgress(progress);                    
+                });
+            }
+        }
+
         private void OnFileSystemChanged()
         {
             lock (_events)
@@ -35,6 +47,7 @@ namespace Model
             }
         }
 
+        public event Action<float> FileSystemOperationProgress = delegate { };
         public event Action FilesChanged = delegate { };
     }
 }
