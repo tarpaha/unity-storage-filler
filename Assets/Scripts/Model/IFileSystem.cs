@@ -9,6 +9,7 @@ namespace Model
         void Create(string name, long size);
         void Delete(string name);
 
+        event Action<float> Progress;
         event Action Changed;
         
         long FreeSpace { get; } 

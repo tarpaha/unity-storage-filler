@@ -31,6 +31,7 @@ namespace Model
 
         public void Create(string name, long size)
         {
+            Progress(0);
             var file = File.Create(_dir + name);
             while (size > _buffer.Length)
             {
@@ -39,6 +40,7 @@ namespace Model
             }
             file.Write(_buffer, 0, (int)size);
             file.Close();
+            Progress(1);
             Changed();
         }
 
@@ -48,6 +50,7 @@ namespace Model
             Changed();
         }
 
+        public event Action<float> Progress = delegate { };
         public event Action Changed = delegate { };
 
         public long FreeSpace { get { return _platform.FreeSpace; } }

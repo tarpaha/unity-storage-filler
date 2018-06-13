@@ -15,7 +15,9 @@ namespace Model
 
         public void Create(string name, long size)
         {
+            Progress(0);
             _files.Add(new FileRecord(name, size));
+            Progress(1);
             Changed();
         }
 
@@ -25,6 +27,7 @@ namespace Model
             Changed();
         }
 
+        public event Action<float> Progress = delegate { };
         public event Action Changed = delegate { };
 
         public long FreeSpace
