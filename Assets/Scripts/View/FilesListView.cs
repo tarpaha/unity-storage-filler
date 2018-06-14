@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DI;
 using Model;
 using UnityEngine;
@@ -44,7 +45,7 @@ namespace View
 		{
 			ClearList();
 			
-			var files = GetFiles();
+			var files = GetFiles().OrderBy(file => file.Date);
 			foreach (var file in files)
 			{
 				var element = CreateFileView(file);
