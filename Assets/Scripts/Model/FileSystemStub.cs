@@ -16,7 +16,7 @@ namespace Model
         public void Create(string name, long size)
         {
             Progress(0);
-            _files.Add(new FileRecord(name, size));
+            _files.Add(new FileRecord(name, DateTime.Now, size));
             Progress(1);
             Changed();
         }

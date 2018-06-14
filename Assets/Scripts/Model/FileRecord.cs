@@ -8,9 +8,10 @@ namespace Model
         public DateTime Date { get; private set; }
         public long Size { get; private set; }
 
-        public FileRecord(string name, long size)
+        public FileRecord(string name, DateTime date, long size)
         {
             Name = name;
+            Date = date;
             Size = size;
         }
     }

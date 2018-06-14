@@ -25,7 +25,7 @@ namespace Model
         {
             return new DirectoryInfo(_dir)
                 .GetFiles()
-                .Select(fileInfo => (IFileRecord) new FileRecord(fileInfo.Name, fileInfo.Length))
+                .Select(fileInfo => (IFileRecord) new FileRecord(fileInfo.Name, fileInfo.CreationTime, fileInfo.Length))
                 .ToList();
         }
 
