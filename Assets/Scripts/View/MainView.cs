@@ -46,6 +46,14 @@ namespace View
 			_events.FilesChanged -= OnFilesChanged;
 		}
 
+		private void OnApplicationPause(bool pause)
+		{
+			if (!pause)
+			{
+				UpdateControls();
+			}
+		}
+
 		private void OnFileSystemOperationProgress(float progress)
 		{
 			UpdateProgress(progress);
