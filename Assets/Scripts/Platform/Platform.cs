@@ -11,6 +11,8 @@ namespace Platform
             return new PlatformWindowsEditor(Path.GetPathRoot(Application.persistentDataPath));
 #elif UNITY_ANDROID
 			return new PlatformAndroid();
+#elif UNITY_IOS
+            return new PlatformIOS();
 #endif
         }
     }
