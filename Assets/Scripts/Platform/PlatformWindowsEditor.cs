@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR_WIN
+using System;
 using System.Runtime.InteropServices;
 
 namespace Platform
@@ -33,3 +34,4 @@ namespace Platform
         }
     }
 }
+#endif

@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Model;
-using Platform;
+﻿using Model;
 using UnityEngine;
 
 namespace DI
@@ -16,7 +14,7 @@ namespace DI
 		private void Register()
 		{
 			FileSystem = new FileSystem(
-				GetPlatform(),
+				Platform.Platform.Get(),
 				Application.persistentDataPath + "/");
 			
 			Events = new MainThreadEvents(FileSystem);
@@ -28,22 +26,6 @@ namespace DI
 		private void Update()
 		{
 			Events.Process();
-		}
-
-		////////////////////////////////////////////////////////////////////////////////
-		////////////////////////////////////////////////////////////////////////////////
-		
-		private static IPlatform GetPlatform()
-		{
-#if UNITY_EDITOR
-	#if UNITY_EDITOR_WIN
-			return new PlatformWindowsEditor(Path.GetPathRoot(Application.persistentDataPath));
-	#endif
-#else
-	#if UNITY_ANDROID
-			return new PlatformAndroid();
-	#endif
-#endif
 		}
 
 		////////////////////////////////////////////////////////////////////////////////
