@@ -1,14 +1,11 @@
-﻿using System.IO;
-using UnityEngine;
-
-namespace Platform
+﻿namespace Platform
 {
     public static class Platform
     {
         public static IPlatform Get()
         {
 #if UNITY_EDITOR_WIN
-            return new PlatformWindowsEditor(Path.GetPathRoot(Application.persistentDataPath));
+            return new PlatformWindowsEditor();
 #elif UNITY_ANDROID
 			return new PlatformAndroid();
 #elif UNITY_IOS

@@ -1,6 +1,8 @@
 ﻿#if UNITY_EDITOR_WIN
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
 namespace Platform
 {
@@ -15,9 +17,9 @@ namespace Platform
 
         private readonly char _drive;
 
-        public PlatformWindowsEditor(string path)
+        public PlatformWindowsEditor()
         {
-            _drive = path[0];
+            _drive = Path.GetPathRoot(Application.persistentDataPath)[0];
         }
 
         public long FreeSpace
