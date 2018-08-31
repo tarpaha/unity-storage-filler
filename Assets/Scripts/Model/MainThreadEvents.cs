@@ -21,7 +21,7 @@ namespace Model
         {
             lock (_events)
             {
-                if (_events.Count > 0)
+                while (_events.Count > 0)
                 {
                     _events.Dequeue()();                    
                 }
