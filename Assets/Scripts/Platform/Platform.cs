@@ -10,6 +10,8 @@
 			return new PlatformAndroid();
 #elif UNITY_IOS
             return new PlatformIOS();
+#else
+#error Current platform is not supported, switch to another in build settings
 #endif
         }
     }
