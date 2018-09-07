@@ -13,7 +13,7 @@ namespace Model
         private readonly string _dir;
         private readonly byte[] _buffer;
 
-        private const int BufferSize = 1 * (1 << 20);
+        private const int BufferSize = 10 * (1 << 20);
 
         public FileSystem(IPlatform platform, string dir)
         {
