@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Platform;
 
 namespace Model
@@ -40,6 +41,7 @@ namespace Model
                     while (size > _buffer.Length)
                     {
                         file.Write(_buffer, 0, _buffer.Length);
+                        Thread.Sleep(1);
                         size -= _buffer.Length;
                         Progress(1.0f - k * size);
                     }
